@@ -1,12 +1,18 @@
 Package: deeplearning
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Implement a few latest deep learning models in R
 Version: 0.1
 Date: 2016-03-14
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Zhi Ryan Ruan
+Maintainer: <ryan.zhiruan@gmail.com>
+Description: 
 License: What license is it under?
 LazyData: TRUE
 URL: https://github.com/rz1988/deeplearning
 BugReports: https://github.com/rz1988/deeplearning/issues
+Depends:
+    methods,
+    darch (>= 0.10.0),
+Imports:
+    plotly
+RoxygenNote: 5.0.1
