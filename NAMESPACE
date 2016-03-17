@@ -2,6 +2,7 @@
 
 S3method(rsq,DArch)
 S3method(rsq,lm)
+export(convert_categorical)
 export(forward_propagate)
 export(rectified_linear_unit_function)
 export(rsq)
