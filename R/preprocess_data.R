@@ -37,6 +37,7 @@ convert_categorical <- function(x,
   } else {
     unique_x <- unique(x)
     ordered_list <- sort(unique_x)
+    num_categories <- length(ordered_list)
     mapped_value <- c(1:num_categories)
     numeric_x <- mapped_value[match(x, ordered_list)]
     vectorized_x <- matrix(0, nrow = length(x), ncol = length(unique_x))
