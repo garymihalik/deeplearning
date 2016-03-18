@@ -4,12 +4,12 @@
 \alias{forward_propagate}
 \title{Forward propagate a deep neural network}
 \usage{
-forward_propagate(darch, data)
+forward_propagate(darch, input = darch@dataSet@data)
 }
 \arguments{
 \item{darch}{A DArch instance}
 
-\item{data}{Input data}
+\item{input}{Input data}
 }
 \description{
 Calcualte all layer's activation value and derivative function value

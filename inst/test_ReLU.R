@@ -5,6 +5,8 @@ num_valid <- 100
 x <- matrix(runif(num_dim * num_training), num_training, num_dim)
 y <- rowSums(sin(x)+cos(x)^2)
 
+y <- sample(0:1, size = num_training, replace = T)
+
 x_valid <- matrix(runif(num_dim * num_valid), num_valid, num_dim)
 y_valid <- rowSums(sin(x_valid)+cos(x_valid)^2)
 
@@ -13,19 +15,19 @@ y_valid <- rowSums(sin(x_valid)+cos(x_valid)^2)
 
 darch <- darch(x = x,
                y = y,
-               darch = darch,
-               xValid = x_valid,
-               yValid = y_valid,
+               # darch = darch,
+               # xValid = x_valid,
+               # yValid = y_valid,
                 layers = c(num_dim, 50, 50, 1),
                 rbm.numEpochs = 0,
                 darch.bootstrap =  F,
                 # darch.layerFunctionDefault = rectified_linear_unit_function,
                 darch.layerFunctionDefault = sigmoidUnitDerivative,
-                darch.layerFunctions = c("3" = linearUnitDerivative),
-                darch.isBin = F,
-                darch.isClass = F,
+                darch.layerFunctions = c("3" = sigmoidUnitDerivative),
+                darch.isBin = T,
+                darch.isClass = T,
                 darch.batchSize = 10,
-                darch.numEpochs = 600
+                darch.numEpochs = 6
                 )
 
 rsq(darch)
@@ -38,15 +40,15 @@ darch_ReLU <- darch(x = x,
                # xValid = x_valid,
                # yValid = y_valid,
                layers = c(num_dim, 50, 50, 1),
-               rbm.numEpochs = 5,
+               rbm.numEpochs = 0,
                darch.bootstrap =  F,
                darch.layerFunctionDefault = rectified_linear_unit_function,
                # darch.layerFunctionDefault = sigmoidUnitDerivative,
                darch.layerFunctions = c("3" = linearUnitDerivative),
                darch.isBin = F,
                darch.isClass = F,
-               darch.batchSize = 100,
-               darch.numEpochs = 0
+               darch.batchSize = 10,
+               darch.numEpochs = 10
 )
 
 rsq(darch_ReLU)
