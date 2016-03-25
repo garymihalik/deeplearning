@@ -5,7 +5,7 @@ Version: 0.1
 Date: 2016-03-14
 Author: Zhi Ryan Ruan
 Maintainer: <ryan.zhiruan@gmail.com>
-Description:
+Description: A package for deep neural network
 License: What license is it under?
 LazyData: TRUE
 URL: https://github.com/rz1988/deeplearning
