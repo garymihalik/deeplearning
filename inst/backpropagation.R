@@ -22,11 +22,6 @@ test_backpropagation <- function(darch, trainData, targetData, ...)
     # apply dropout masks to weights, unless we're on the last layer; this is
     # done to allow activation functions to avoid considering values that are
     # later going to be dropped
-    if (i < numLayers)
-    {
-      weights <- applyDropoutMask(weights, getDropoutMask(darch, i))
-# RZ: is this correct?
-    }
 
     ret <- func(data,weights)
 

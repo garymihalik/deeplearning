@@ -56,8 +56,8 @@ darch_2 = darch( x = input,
                darch.dropoutInput = 0.,
                darch.dropoutHidden = 0.,
                # darch.errorFunction = crossEntropyError,
-               darch.fineTuneFunction = finetune_SGD,
-               errorFunc = crossEntropyErr,
+               darch.fineTuneFunction = finetune_SGD_bn,
+               errorFunc = meanSquareErr,
                darch.batchSize = 10,
                darch.numEpochs = 50
 )
