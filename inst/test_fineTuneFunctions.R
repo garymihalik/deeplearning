@@ -10,19 +10,25 @@ setFineTuneFunction(darch) <- backpropSGD
 darch = generateDropoutMasksForDarch(darch)
 
 # New a dataset
-input <- matrix(runif(200), 10, 20)
-target <- rowSums(cos(input) + sin(input))
+input <- matrix(runif(250), 50, 5)
+target <- rowSums(cos(input) + sin(input)^2)
 
-dataset = createDataSet(input, target)
+mean_v <- mean(target)
+target <- as.numeric(target > mean_v * 1.02 )
 
-# Use the interface function
+input_test <- matrix(runif(100), 20, 5)
+target_test <- rowSums(cos(input_test) + sin(input_test)^2)
+mean_v <- mean(target_test)
+target_test <- as.numeric(target_test > mean_v * 1.02)
 
-darch = darch( x = dataset@data,
-               y = dataset@targets,
-               layers = c(20, 100, 50, 1),
+# Compare with the benchmark - backpropagation
+
+darch_1 = darch( x = input,
+               y = target,
+               layers = c(5, 100, 50, 1),
                # darch = darch,
                darch.layerFunctionDefault = rectified_linear_unit_function,
-               darch.layerFunctions = c("3" = linearUnitDerivative),
+               darch.layerFunctions = c("3" = sigmoidUnitDerivative),
                darch.bootstrap = F,
                darch.isBin = F,
                darch.isClass = F,
@@ -32,12 +38,41 @@ darch = darch( x = dataset@data,
                darch.dropoutHidden = 0.,
                darch.fineTuneFunction = backpropagation, # finetune_SGD,
                darch.batchSize = 10,
-               darch.numEpochs = 10
+               darch.numEpochs = 50
                )
 
-plot(predict(darch), target)
 
-# Finetune the DArch instance
+darch_2 = darch( x = input,
+               y = target,
+               layers = c(5, 100, 50, 1),
+               # darch = darch,
+               darch.layerFunctionDefault = rectified_linear_unit_function,
+               darch.layerFunctions = c("3" = sigmoidUnitDerivative),
+               darch.bootstrap = F,
+               darch.isBin = F,
+               darch.isClass = F,
+               darch.learnRateWeights = 0.01,
+               darch.learnRateBiases = 0.01,
+               darch.dropoutInput = 0.,
+               darch.dropoutHidden = 0.,
+               # darch.errorFunction = crossEntropyError,
+               darch.fineTuneFunction = finetune_SGD,
+               errorFunc = crossEntropyErr,
+               darch.batchSize = 10,
+               darch.numEpochs = 50
+)
+
+AR(darch_1)
+AR(darch_2)
+
+AR(darch_1, input_test, target_test)
+AR(darch_2, input_test, target_test)
+
+plot(predict(darch_1), predict(darch_2))
+
+# Just use the finetuneDArch method.
+# This function should be seperated to a train_dnn function
+
 darch3 = fineTuneDArch(darch, dataset,
                        dataSetValid = NULL,
                        numEpochs = 5,

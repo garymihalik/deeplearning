@@ -46,7 +46,7 @@ backpropagate_delta <- function(darch, trainData,targetData, errorFunc = meanSqu
   rm(data,numRows)
 
   # 2. Calculate the Error on the network output
-  errorDerivative <- (outputs[[numLayers]] - targetData)
+  errorDerivative <- errorFunc(outputs[[numLayers]], targetData)[[2]]
   delta[[numLayers]] <- errorDerivative * derivatives[[numLayers]]
 
   E <- errorFunc(targetData,outputs[[numLayers]][])[[1]]

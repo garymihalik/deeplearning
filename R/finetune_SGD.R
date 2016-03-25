@@ -4,8 +4,8 @@
 #'
 #' @export
 
-finetune_SGD <- function(darch, trainData, targetData) {
-  ret <- backpropagate_delta(darch, trainData, targetData)
+finetune_SGD <- function(darch, trainData, targetData, errorFunc = meanSquareErr) {
+  ret <- backpropagate_delta(darch, trainData, targetData, errorFunc)
   outputs <- ret[[1]]
   delta <- ret[[2]]
   layers <- getLayers(darch)
