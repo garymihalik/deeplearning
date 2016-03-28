@@ -72,8 +72,9 @@ plot(predict(darch_1), predict(darch_2))
 
 # Just use the finetuneDArch method.
 # This function should be seperated to a train_dnn function
+dataset <- createDataSet(input, target)
 
-darch3 = fineTuneDArch(darch, dataset,
+darch3 = fineTuneDArch(darch_1, dataset,
                        dataSetValid = NULL,
                        numEpochs = 5,
                        bootstrap = F,

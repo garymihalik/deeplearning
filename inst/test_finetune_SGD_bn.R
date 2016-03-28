@@ -23,6 +23,9 @@ darch = darch( x = input,
                  darch.numEpochs = 1
 )
 
+plot(target, predict(darch))
+
+
 backpropagate_delta_bn(darch,
                        input,
                        target)
@@ -36,7 +39,11 @@ darch@executeFunction <- run_darch_bn
 darch <- train_dnn_bn(darch,
                       input,
                       target,
-                      num_epochs = 50)
+                      learn_rate_gamma = 100,
+                      num_epochs = 100)
+
+
+plot(target, predict(darch))
 
 
 

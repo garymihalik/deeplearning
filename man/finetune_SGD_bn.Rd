@@ -4,7 +4,8 @@
 \alias{finetune_SGD_bn}
 \title{Finetune function that trains a deep neural network using stochastic gradient descent method}
 \usage{
-finetune_SGD_bn(darch, trainData, targetData, errorFunc = meanSquareErr)
+finetune_SGD_bn(darch, trainData, targetData, learn_rate_gamma = exp(-10),
+  errorFunc = meanSquareErr)
 }
 \description{
 This function finetunes a DArch network using SGD approach

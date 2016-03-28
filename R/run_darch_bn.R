@@ -40,12 +40,12 @@ run_darch_bn <- function(darch,data){
     if(i < length(layers)){
       dropoutHidden <- darch@dropoutHidden
     } else {
-      dropoutHidden <- 1
+      dropoutHidden <- 0
     }
 
-    weight <- weight * dropoutHidden
-    beta <- beta * dropoutHidden
-    gamma <- gamma * dropoutHidden
+    weight <- weight * (1 - dropoutHidden)
+    beta <- beta * (1 - dropoutHidden)
+    gamma <- gamma * (1 - dropoutHidden)
 
     x <- data %*% weight
 

@@ -39,9 +39,9 @@ train_dnn_bn <- function(darch,
     dimV_input <- dim(ret)[[1]] - 1
     dimV_output <- dim(ret)[[2]]
     if(i < length(layers)){
-      weight <- ret[1:(dimV_input), ] * darch@dropoutHidden
-      beta <- ret[(dimV_input + 1), ] * darch@dropoutHidden
-      gamma <- getLayer(darch, i)[[4]] * darch@dropoutHidden
+      weight <- ret[1:(dimV_input), ] * (1 - darch@dropoutHidden)
+      beta <- ret[(dimV_input + 1), ] * (1 - darch@dropoutHidden)
+      gamma <- getLayer(darch, i)[[4]] * (1 - darch@dropoutHidden)
     } else {
       weight <- ret[1:(dimV_input), ]
       beta <- ret[(dimV_input + 1), ]
