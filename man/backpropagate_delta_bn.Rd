@@ -6,7 +6,7 @@
 normalization}
 \usage{
 backpropagate_delta_bn(darch, trainData, targetData,
-  errorFunc = meanSquareErr)
+  errorFunc = meanSquareErr, with_BN = T)
 }
 \description{
 Calculates the delta functions using backpropagation

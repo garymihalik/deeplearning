@@ -13,7 +13,8 @@ train_dnn_bn <- function(darch,
                          error_function = meanSquareErr) {
   dataset <- createDataSet(input, target)
 
-  darch@fineTuneFunction = finetune_SGD_bn
+  darch@fineTuneFunction <- finetune_SGD_bn
+  darch@executeFunction <- run_darch_bn
 
   darch = fineTuneDArch(darch, dataset,
                          dataSetValid = NULL,
@@ -38,7 +39,7 @@ train_dnn_bn <- function(darch,
     ret <- getLayerWeights(darch, i)
     dimV_input <- dim(ret)[[1]] - 1
     dimV_output <- dim(ret)[[2]]
-    if(i < length(layers)){
+    if(i < numLayers){
       weight <- ret[1:(dimV_input), ] * (1 - darch@dropoutHidden)
       beta <- ret[(dimV_input + 1), ] * (1 - darch@dropoutHidden)
       gamma <- getLayer(darch, i)[[4]] * (1 - darch@dropoutHidden)

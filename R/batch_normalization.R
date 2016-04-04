@@ -29,6 +29,8 @@ batch_normalization <- function(x,
     sigma_2 <- numObs / (numObs - 1) * (verticalize(colMeans(x^2), numObs) - mu^2)
   }
 
+
+
   x_hat <- (x - mu) / sqrt(sigma_2 + epsilon)
   y <- x_hat * gamma + beta
 
@@ -64,7 +66,9 @@ batch_normalization_differential <- function(delta_y,
                                              x_hat,
                                              y,
                                              gamma,
-                                             beta) {
+                                             beta,
+                                             epsilon = exp(-12),
+                                             with_BN = T) {
   # helper function that repeat a row vector N times
   verticalize <- function(vector, N) {
     return(matrix(rep(vector, N), N, byrow = T))
@@ -72,32 +76,35 @@ batch_normalization_differential <- function(delta_y,
   numObs <- dim(x)[[1]]
 
   delta_x_hat <- delta_y * gamma
-  delta_sigma_2 <-  verticalize(
-    colSums(delta_x_hat * (x - mu) * (-0.5) * (sigma_2 + epsilon)^(-1.5)),
-    numObs)
 
-  tmp1 <- verticalize(colSums(delta_x_hat * (-1) / sqrt(sigma_2 + epsilon)), numObs)
-  tmp2 <- delta_sigma_2 * verticalize(colMeans(-2 * (x- mu)), numObs)
-  delta_mu <- tmp1 + tmp2
+  if(with_BN) {
+    delta_sigma_2 <-  verticalize(colSums(delta_x_hat * (x - mu) * (-0.5) * (sigma_2 + epsilon)^(-1.5)), numObs)
+
+    tmp1 <- verticalize(colSums(delta_x_hat * (-1) / sqrt(sigma_2 + epsilon)), numObs)
+    tmp2 <- delta_sigma_2 * verticalize(colMeans(-2 * (x- mu)), numObs)
+
+    delta_mu <- tmp1 + tmp2
+
+    delta_gamma <- verticalize(colSums(delta_y * x_hat), numObs)
+  } else {
+    delta_sigma_2 <-  verticalize(rep(0, dim(delta_y)[[2]]), numObs)
+    delta_mu <- verticalize(rep(0, dim(delta_y)[[2]]), numObs)
+    delta_gamma <- verticalize(rep(0, dim(delta_y)[[2]]), numObs)
+  }
 
   tmp1 <- delta_x_hat / sqrt(sigma_2 + epsilon)
   tmp2 <- delta_sigma_2 * 2 * (x - mu) / numObs
   tmp3 <- delta_mu / numObs
   delta_x <- tmp1 + tmp2 + tmp3
 
-  # print(tmp1)
-  # print(tmp2)
-  # print(tmp3)
-
-  delta_gamma <- verticalize(colSums(delta_y * x_hat), numObs)
   delta_beta <- verticalize(colSums(delta_y), numObs)
 
   ret <- list()
   ret[[1]] <- delta_x
   ret[[2]] <- delta_gamma
   ret[[3]] <- delta_beta
-  # ret[[4]] <- delta_x_hat
-  # ret[[5]] <- delta_sigma_2
-  # ret[[6]] <- delta_mu
+  ret[[4]] <- delta_x_hat
+  ret[[5]] <- delta_sigma_2
+  ret[[6]] <- delta_mu
   return(ret)
 }

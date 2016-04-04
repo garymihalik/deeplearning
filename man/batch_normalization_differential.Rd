@@ -4,7 +4,8 @@
 \alias{batch_normalization_differential}
 \title{Function that calcualtes the differentials in the batch normalization mode}
 \usage{
-batch_normalization_differential(delta_y, mu, sigma_2, x, x_hat, y, gamma, beta)
+batch_normalization_differential(delta_y, mu, sigma_2, x, x_hat, y, gamma, beta,
+  epsilon = exp(-12), with_BN = T)
 }
 \arguments{
 \item{delta_y}{derivative wrt y}

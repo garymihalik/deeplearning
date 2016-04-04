@@ -56,36 +56,6 @@ rsq.lm <- function(mod, input, target) {
 }
 
 
-#' Forward propagate a deep neural network
-#'
-#' Calcualte all layer's activation value and derivative function value
-#'
-#' @param darch A DArch instance
-#' @param input Input data
-#'
-#' @export
-
-forward_propagate <- function(darch, input = darch@dataSet@data) {
-  numLayers <- length(getLayers(darch))
-  h <- list()
-  derivative <- list()
-  h[[1]] <- input
-  derivative[[1]] <- matrix(0, dim(input)[[1]], dim(input)[[2]])
-  for(i in 1:(numLayers)) {
-    ret <- getLayer(darch, i)
-    weight <- ret[[1]]
-    layerFunc <- ret[[2]]
-    h[[i]] <- cbind(h[[i]], rep(1, dim(x)[[1]]))
-    o <- layerFunc(h[[i]], weight)
-    h[[i]] <- h[[i]][, 1:(dim(h[[i]])[[2]]-1)]
-    h[[i+1]] <- o[[1]]
-    derivative[[i+1]] <- o[[2]]
-  }
-  ret <- list()
-  ret[[1]] <- h
-  ret[[2]] <- derivative
-  return(ret)
-}
 
 #' Utility function that prints out the weight of a deep neural network
 #'
@@ -230,10 +200,30 @@ AR.DArch <- function(darch, input = darch@dataSet@data,
 
 
 
+#' Applies the given dropout mask to the given data row-wise.
+#'
+#' This function multiplies each row with the dropout mask. To apply the dropout
+#' mask by row, it can simply be multiplied with the data matrix. This does not
+#' work of the mask is to be applied row-wise, hence this function.
+#'
+#' @param data Data to which the dropout mask should be applied
+#' @param mask The dropout mask, a vector of 0 and 1.
+#' @return Data with applied dropout mask
+#' @export
+applyDropoutMask <- function(data, mask)
+{
+  return (data * matrix(rep(mask, nrow(data)), nrow=nrow(data), byrow=T))
+}
 
 
 
+#' Helper function
+#'
+#' @export
 
+matMult <- function(data, weight) {
+  return(data %*% weight)
+}
 
 
 

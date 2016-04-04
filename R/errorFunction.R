@@ -9,6 +9,7 @@ crossEntropyErr <- function(output, target) {
   # err <- - sum(target[] * log(output[]) + (1 - target[]) * log(1 - output[]))
   err <- - sum(target * log(output) + (1 - target) * log(1 - output))
   err2 <- (1-target)/(1-output) - target/output
+
   ret <- list()
   ret[[1]] <- err
   ret[[2]] <- err2
@@ -27,4 +28,24 @@ meanSquareErr <- function(output, target) {
   ret[[3]] <- "Mean Squared Error"
   return(ret)
 
+}
+
+#' Calculates the classification error
+#'
+#' Calculates the classification error
+#'
+#' @export
+
+classification_error <- function(output, target) {
+  boolOut <- (output > 0.5) * 1
+  boolOutTarget <- cbind(boolOut, target)
+  rows <- nrow(target)
+  cols <- ncol(target)
+  classification_error <- sum(apply(boolOutTarget, 1, function(y)
+  { any(y[1:cols] != y[(cols+1):(2*cols)])})) / rows * 100
+
+  ret <- list()
+  ret[[1]] <- classification_error
+  ret[[2]] <- "Classification Error"
+  return (ret)
 }

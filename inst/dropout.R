@@ -40,22 +40,30 @@ generateDropoutMask <- function(length, dropoutRate)
   return (ret)
 }
 
-generateDropoutMasksForDarch <- function(darch)
+#' Generates the dropout masks for darch
+#'
+#' Generates the dropout masks for darch
+#'
+#' @export
+
+generateDropoutMasksForDarch <- function(darch, dropout_input, dropout_hidden)
 {
   dropoutMasks <- list()
   numLayers <- length(getLayers(darch))
 
   # generate dropout masks
-  setDropoutMask(darch, 0) <-
+  dropoutMasks[[1]] <-
     generateDropoutMask(nrow(getLayerWeights(darch, 1)[]) - 1,
-                        darch@dropoutInput)
-  for (i in 1:(numLayers - 1))
+                        dropout_input)
+
+  for (i in 2:(numLayers))
   {
-    setDropoutMask(darch, i) <-
-      generateDropoutMask(nrow(getLayerWeights(darch, i+1)[])-1,
-                          darch@dropoutHidden)
+    dropoutMasks[[i]] <-
+      generateDropoutMask(nrow(getLayerWeights(darch, i)[]) - 1,
+                          dropout_hidden)
   }
 
+  darch@dropoutMasks <- dropoutMasks
   return (darch)
 }
 
