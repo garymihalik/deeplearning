@@ -618,7 +618,7 @@ darch <- train_dnn(darch,
                    learn_rate_bias = exp(-8),
                    learn_rate_gamma = exp(-8),
                    batch_size = 10,
-                   batch_normalization = F,
+                   batch_normalization = T,
                    dropout_input = 0.,
                    dropout_hidden = 0.,
                    momentunm_initial = 0.6,
@@ -627,7 +627,7 @@ darch <- train_dnn(darch,
                    num_epochs = 50,
                    # target types
                    error_function = crossEntropyErr,
-                   report_classification_error = F
+                   report_classification_error = T
 )
 
 AR(darch, input = input, target = target)

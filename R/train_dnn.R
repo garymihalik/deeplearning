@@ -123,7 +123,7 @@ train_dnn <- function(darch, # darch instance to train
       darch@stats$validErrors$raw <- c(darch@stats$validErrors$raw, error_valid[[1]])
 
       if(report_classification_error) {
-        ce_valid <- classification_error(pred_test, validTarget)
+        ce_valid <- classification_error(pred_valid, validTarget)
         flog.info(paste(ce_valid[[2]], "in validation:", ce_valid[[1]]))
         darch@stats$validErrors$class <- c(darch@stats$validErrors$class, ce_valid[[1]])
       }
