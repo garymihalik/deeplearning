@@ -1,10 +1,12 @@
 #' Generates dropout masks for dnn
 #'
-#' Generates dropout maks for dnn
+#' This function generates dropout maks for dnn
 #'
-#'
-#'
-#' @export
+#' @references Dropout: A Simple Way to Prevent Neural Networks from
+#'  Overfitting, Nitish Srivastava
+#' @seealso \url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
+
+
 
 generateDropoutMasksForDarch <- function(darch, dropout_input, dropout_hidden)
 {
@@ -27,10 +29,12 @@ generateDropoutMasksForDarch <- function(darch, dropout_input, dropout_hidden)
 
 #' Generates the dropout mask for the deep neural network
 #'
-#' Generates the dropout mask for the deep neural network
+#' This function generates the dropout mask for the deep neural network
 #'
-#'
-#' @export
+#' @references Dropout: A Simple Way to Prevent Neural Networks from
+#'  Overfitting, Nitish Srivastava
+#' @seealso \url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
+
 
 
 generateDropoutMask <- function(length, dropoutRate)
@@ -47,3 +51,26 @@ generateDropoutMask <- function(length, dropoutRate)
 
   return (ret)
 }
+
+
+
+#' Applies the given dropout mask to the given data row-wise.
+#'
+#' This function multiplies each row with the dropout mask. To apply the dropout
+#' mask by row, it can simply be multiplied with the data matrix. This does not
+#' work of the mask is to be applied row-wise, hence this function.
+#'
+#' @param data Data to which the dropout mask should be applied
+#' @param mask The dropout mask, a vector of 0 and 1.
+#' @return Data with applied dropout mask
+#'
+#' @references Dropout: A Simple Way to Prevent Neural Networks from
+#'  Overfitting, Nitish Srivastava
+#' @seealso \url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
+
+
+applyDropoutMask <- function(data, mask)
+{
+  return (data * matrix(rep(mask, nrow(data)), nrow=nrow(data), byrow=T))
+}
+

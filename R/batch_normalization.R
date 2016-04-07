@@ -1,12 +1,14 @@
 #' Batch Normalization Function that normalizes the input before applying non-linearity
 #'
-#' Normalize the input distribution for hidden layers in a neural network
+#' This function normalizes the distribution of inputs to hidden layers in
+#' a neural network
 #' @param x weighted sum of outputs from the previous layer
 #' @param gamma the gamma coefficient
 #' @param beta the beta coefficient
 #' @param epsilon a constant added to the variance for numerical stability
-#' @references http://jmlr.org/proceedings/papers/v37/ioffe15.pdf Pg 4
-#' @export
+#' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+#' Sergey Ioffe, Christian Szegedy
+#' @seealso  \url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4
 
 batch_normalization <- function(x,
                                 gamma,
@@ -55,9 +57,9 @@ batch_normalization <- function(x,
 #' @param gamma gamma coefficient
 #' @param beta beta coefficient
 #'
-#' @references http://jmlr.org/proceedings/papers/v37/ioffe15.pdf Pg 4
-#'
-#' @export
+#' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+#'  Sergey Ioffe, Christian Szegedy
+#' @seealso \url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4
 
 batch_normalization_differential <- function(delta_y,
                                              mu,

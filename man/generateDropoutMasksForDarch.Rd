@@ -7,6 +7,13 @@
 generateDropoutMasksForDarch(darch, dropout_input, dropout_hidden)
 }
 \description{
-Generates dropout maks for dnn
+This function generates dropout maks for dnn
+}
+\references{
+Dropout: A Simple Way to Prevent Neural Networks from
+ Overfitting, Nitish Srivastava
+}
+\seealso{
+\url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
 }
 

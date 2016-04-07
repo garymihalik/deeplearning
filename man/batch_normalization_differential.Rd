@@ -28,6 +28,10 @@ batch_normalization_differential(delta_y, mu, sigma_2, x, x_hat, y, gamma, beta,
 Calculates the differentials in batch normalization
 }
 \references{
-http://jmlr.org/proceedings/papers/v37/ioffe15.pdf Pg 4
+Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+ Sergey Ioffe, Christian Szegedy
+}
+\seealso{
+\url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4
 }
 

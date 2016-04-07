@@ -6,7 +6,12 @@
 \usage{
 run_dnn(darch, data)
 }
+\arguments{
+\item{darch}{a darch instance}
+
+\item{data}{input data}
+}
 \description{
-Execution function that runs in the batch normalization mode
+This function calcualtes the output of a deep neural network with input data
 }
 

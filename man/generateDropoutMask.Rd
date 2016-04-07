@@ -7,6 +7,13 @@
 generateDropoutMask(length, dropoutRate)
 }
 \description{
-Generates the dropout mask for the deep neural network
+This function generates the dropout mask for the deep neural network
+}
+\references{
+Dropout: A Simple Way to Prevent Neural Networks from
+ Overfitting, Nitish Srivastava
+}
+\seealso{
+\url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
 }
 

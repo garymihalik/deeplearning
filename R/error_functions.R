@@ -1,7 +1,9 @@
-
-# Assume a logit or softmax output layer
+#' Calculates the cross entropy error
 #'
+#' This function calculates the cross entropy error and its first order derivatives
 #'
+#' @param output the output value
+#' @param target the target value
 #'
 #' @export
 
@@ -17,6 +19,13 @@ crossEntropyErr <- function(output, target) {
   return(ret)
 }
 
+#' Calculates the mean squared error
+#'
+#' This function calculates the mean squared error and its first order derivatives
+#'
+#' @param output the output value
+#' @param target the target value
+#'
 #' @export
 
 meanSquareErr <- function(output, target) {
@@ -32,7 +41,11 @@ meanSquareErr <- function(output, target) {
 
 #' Calculates the classification error
 #'
-#' Calculates the classification error
+#' This function calculates the classification error
+#'
+#' @param output the output of a classifier in the form of probability. Probability > 1
+#' will be treated as positive (target = 1).
+#' @param target the target variable
 #'
 #' @export
 

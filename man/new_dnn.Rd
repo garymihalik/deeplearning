@@ -19,6 +19,6 @@ new_dnn(layer_structure, layer_functions = NULL,
 \item{layer_function_default}{default function used as the activation function}
 }
 \description{
-Generates a new instance of darch class
+This function creates a new instance of darch class
 }
 

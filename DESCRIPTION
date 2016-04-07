@@ -1,19 +1,28 @@
 Package: deeplearning
 Type: Package
-Title: Implement a few latest deep learning models in R
-Version: 0.1
+Title: An implementation of deep neural network for regression and classification 
+Description: An implementation of deep neural network with rectifier linear units (ReLU) that are trained
+	with stochastic gradient descent (SGD) method and batch normalization. A combination of these methods have 
+	achieved state-of-the-art accuracy in imageNet classification by overcoming the gradient saturation 
+	problem experienced in the past when training neural networks with over three to four hidden layers. In addtion, dropout 
+	method (Srivastava 2014) is implemented as a regularization. deeplearning package is inspired by darch package and uses 
+	of its classes and functions.
+Version: 0.1.0 
 Date: 2016-03-14
-Author: Zhi Ryan Ruan
+Authors@R: c(
+    person("Zhi Ryan", "Ruan", , "ryan.zhiruan@gmail", role = c("aut", "cre"))
+    )
 Maintainer: <ryan.zhiruan@gmail.com>
-Description: A package for deep neural network
 License: What license is it under?
 LazyData: TRUE
 URL: https://github.com/rz1988/deeplearning
 BugReports: https://github.com/rz1988/deeplearning/issues
 Depends:
+	R (>= 3.2.4),
     methods,
     darch (>= 0.10.0),
 Imports:
     plotly,
     futile.logger
+License: GPL (>= 2)
 RoxygenNote: 5.0.1

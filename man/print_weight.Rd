@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{print_weight}
 \alias{print_weight}
-\title{Utility function that prints out the weight of a deep neural network}
+\title{Prints out the weight of a deep neural network}
 \usage{
 print_weight(darch, num_of_layer, show_derivative = F, type = "heatmap")
 }
@@ -17,6 +17,6 @@ weight change in the finetuning stage. This helps spot the network saturation pr
 \item{type}{type of the graph. It supports "heatmap", "surface", and "histogram"}
 }
 \description{
-Prints out the weight in a heat map, 3D surface, or histogram
+This function prints out the weight in a heat map, 3D surface, or histogram
 }
 

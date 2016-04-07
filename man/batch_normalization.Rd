@@ -17,9 +17,14 @@ batch_normalization(x, gamma, beta, mu = NULL, sigma_2 = NULL,
 \item{epsilon}{a constant added to the variance for numerical stability}
 }
 \description{
-Normalize the input distribution for hidden layers in a neural network
+This function normalizes the distribution of inputs to hidden layers in
+a neural network
 }
 \references{
-http://jmlr.org/proceedings/papers/v37/ioffe15.pdf Pg 4
+Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+Sergey Ioffe, Christian Szegedy
+}
+\seealso{
+\url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4
 }
 

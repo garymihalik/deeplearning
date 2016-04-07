@@ -1,8 +1,13 @@
 #' Calculates the mu and sigmas of a darch instance
 #'
-#' Calculates the mu and sigmas of a darch instance
+#' This function calculates the mu and sigmas of hidden layers in a darch instance
+#' @param darch a darch instance
+#' @param input input data
 #'
-#' @export
+#'
+
+
+
 
 calcualte_population_mu_sigma <- function (darch, input) {
   numLayers <- length(darch@layers)
@@ -69,9 +74,12 @@ calcualte_population_mu_sigma <- function (darch, input) {
 
 #' Resets the mu and sigmas of a darch instance to 0 and 1
 #'
-#' Resets the mu and sigmas of a darch instance
+#' This function resets the mu and sigmas of hidden layers in a darch instance
+#'  to 0 and 1
+#' @param darch a darch instance
 #'
-#' @export
+
+
 
 reset_population_mu_sigma <- function (darch) {
   numLayers <- length(darch@layers)

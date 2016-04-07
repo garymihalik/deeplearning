@@ -1,6 +1,9 @@
 #' Execution function that runs in the batch normalization mode
 #'
-#' @export
+#' This function calcualtes the output of a deep neural network with input data
+#'
+#' @param darch a darch instance
+#' @param data input data
 
 
 run_dnn <- function(darch, data){

@@ -1,8 +1,19 @@
-#' Finetune function that trains a deep neural network using stochastic gradient descent method
+#' Updates a deep neural network's parameters using stochastic gradient descent
+#'  method and batch normalization
 #'
 #' This function finetunes a DArch network using SGD approach
 #'
-#' @export
+#' @param darch a darch instance
+#' @param trainData training input
+#' @param targetData training target
+#' @param learn_rate_weight leanring rate for the weight matrices
+#' @param learn_rate_bias learning rate for the biases
+#' @param learn_rate_gamma learning rate for the gammas
+#' @param errorFunc the error function to minimize during training
+#' @param with_BN logical value, T to train the neural net with batch normalization
+#'
+#' @return a darch instance with parameters updated with stochastic gradient descent
+#'
 
 finetune_SGD_bn <- function(darch,
                             trainData,

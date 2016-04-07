@@ -1,6 +1,7 @@
 #' Creats a new instance of darch class
 #'
-#' Generates a new instance of darch class
+#' This function creates a new instance of darch class
+#'
 #' @param layer_structure a int vector that specifies the number and width of layers
 #' @param layer_functions a list of activation functions used by each layer
 #' @param layer_function_default default function used as the activation function

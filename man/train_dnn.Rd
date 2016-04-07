@@ -10,7 +10,51 @@ train_dnn(darch, input, target, input_valid = NULL, target_valid = NULL,
   momentum_final, momentum_switch, num_epochs, error_function,
   report_classification_error = F)
 }
+\arguments{
+\item{darch}{a darch instance}
+
+\item{input}{input data for training}
+
+\item{target}{target data for training}
+
+\item{input_valid}{input data for validation}
+
+\item{target_valid}{target data for validation}
+
+\item{...}{additional input}
+
+\item{learn_rate_weight}{learning rate for the weight matrices}
+
+\item{learn_rate_bias}{learning rate for the biases}
+
+\item{learn_rate_gamma}{learning rate for the gamma}
+
+\item{batch_size}{batch size during training}
+
+\item{batch_normalization}{logical value that determines whether to turn on
+batch normalization during training. Recommneded value: T}
+
+\item{dropout_input}{dropout ratio at input layer. Recommneded value: 0.2}
+
+\item{dropout_hidden}{dropout ratio at hidden layers. Recommended value: 0.5}
+
+\item{momentum_final}{final momentum during training. Recommended value: 0.9}
+
+\item{momentum_switch}{afther which epoch the final momentum ratio is used during training}
+
+\item{num_epochs}{number of iterations of the training}
+
+\item{error_function}{error function to minimize during training}
+
+\item{report_classification_error}{logical value. T to report the classification error
+during training}
+
+\item{momentum_initial}{momentum ratio during training. Recommended value: 0.6}
+}
+\value{
+a trained deep neural network (darch instance)
+}
 \description{
-Train a deep neural network
+This function trains a deep neural network
 }
 

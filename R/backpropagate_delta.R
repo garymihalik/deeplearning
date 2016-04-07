@@ -1,9 +1,19 @@
+#' Calculates the delta functions using backpropagation
+#'
 #' function that calculates the delta function of a darch object with batch
 #' normalization
 #'
-#' Calculates the delta functions using backpropagation
+#' @param darch a darch instance
+#' @param trainData training input
+#' @param targetData training target
+#' @param errorFunc error function to minimize during training. Right now mean squared
+#'  erros and cross entropy errors are supported.
+#' @param with_BN traing with batch normalization on or off
 #'
-#' @export
+#' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+#'  Sergey Ioffe, Christian Szegedy
+#' @seealso \url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4
+
 
 backpropagate_delta_bn <- function(darch,
                                    trainData,

@@ -1,8 +1,30 @@
 #' Train a deep neural network
 #'
-#' Train a deep neural network
+#' This function trains a deep neural network
 #'
+#' @param darch a darch instance
+#' @param input input data for training
+#' @param target target data for training
+#' @param input_valid input data for validation
+#' @param target_valid target data for validation
+#' @param ... additional input
+#' @param learn_rate_weight learning rate for the weight matrices
+#' @param learn_rate_bias learning rate for the biases
+#' @param learn_rate_gamma learning rate for the gamma
+#' @param batch_size batch size during training
+#' @param batch_normalization logical value that determines whether to turn on
+#'  batch normalization during training. Recommneded value: T
+#' @param dropout_input dropout ratio at input layer. Recommneded value: 0.2
+#' @param dropout_hidden dropout ratio at hidden layers. Recommended value: 0.5
+#' @param momentum_initial momentum ratio during training. Recommended value: 0.6
+#' @param momentum_final final momentum during training. Recommended value: 0.9
+#' @param momentum_switch afther which epoch the final momentum ratio is used during training
+#' @param num_epochs number of iterations of the training
+#' @param error_function error function to minimize during training
+#' @param report_classification_error logical value. T to report the classification error
+#'  during training
 #'
+#' @return a trained deep neural network (darch instance)
 #' @export
 
 
@@ -144,9 +166,8 @@ train_dnn <- function(darch, # darch instance to train
 
 #' Make the batches
 #'
-#' Make the batches
-#'
-#' @export
+#' This function makes the batches during training
+
 
 
 make_batches <- function(numObs, batchsize) {

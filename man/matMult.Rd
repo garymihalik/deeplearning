@@ -2,11 +2,16 @@
 % Please edit documentation in R/util.R
 \name{matMult}
 \alias{matMult}
-\title{Helper function}
+\title{Calculates the outer product of two matricies}
 \usage{
 matMult(data, weight)
 }
+\arguments{
+\item{data}{the date matrix}
+
+\item{weight}{the weight matrix}
+}
 \description{
-Helper function
+Calcualtes the outer product of two matrices
 }
 

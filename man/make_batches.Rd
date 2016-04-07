@@ -7,6 +7,6 @@
 make_batches(numObs, batchsize)
 }
 \description{
-Make the batches
+This function makes the batches during training
 }
 
