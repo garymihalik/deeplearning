@@ -54,7 +54,8 @@ AR.default <- function(x, target) {
   auc <- auc
   pd <- sum(target) / N
   ar <- (2 * auc - 1) / (1 - pd)
-  plot(as.vector(y))
+  plot(as.vector(y), xlab = "Population", ylab = "Fraction of Positive")
+  if(ar > 1) ar <- 1
   return (ar)
 }
 

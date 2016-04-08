@@ -28,7 +28,7 @@ rsq.DArch <- function(darch,
                       target = darch@dataSet@targets) {
   y <- target
   pred <- predict(darch, newdata = input)
-  plot(y, pred)
+  plot(y, pred, xlab = "target", ylab = "prediction")
   RSQ <- 1 - sum((pred-y)^2)/sum((y-mean(y))^2)
   flog.info(paste0("RSQ = ", RSQ))
 }
@@ -48,6 +48,7 @@ rsq.lm <- function(mod, input, target) {
   y <- target
   pred <- predict(mod, newdata = data.frame(input))
   plot(y, pred)
+  plot(y, pred, xlab = "target", ylab = "prediction")
   RSQ <- 1 - sum((pred-y)^2)/sum((y-mean(y))^2)
   flog.info(paste0("RSQ = ", RSQ))
 }
