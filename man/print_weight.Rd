@@ -19,4 +19,30 @@ weight change in the finetuning stage. This helps spot the network saturation pr
 \description{
 This function prints out the weight in a heat map, 3D surface, or histogram
 }
+\examples{
+# Example of Regression
+
+input <- matrix(runif(1000), 500, 2)
+input_valid <- matrix(runif(100), 50, 2)
+target <- rowSums(input + input^2)
+target_valid <- rowSums(input_valid + input_valid^2)
+# create a new deep neural network for classificaiton
+dnn_regression <- new_dnn(
+ c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
+ # The first element is the number of input variables.
+ # The last element is the number of output variables.
+ hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
+ output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
+)
+
+# print the layer weights
+# this function can print heatmap, histogram, or a surface
+print_weight(dnn_regression, 1, type = "heatmap")
+
+print_weight(dnn_regression, 2, type = "surface")
+
+print_weight(dnn_regression, 3, type = "histogram")
+
+
+}
 

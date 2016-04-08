@@ -5,7 +5,7 @@
 \title{Calculates the delta functions using backpropagation}
 \usage{
 backpropagate_delta_bn(darch, trainData, targetData,
-  errorFunc = meanSquareErr, with_BN = T)
+  errorFunc = meanSquareErr, with_BN = TRUE)
 }
 \arguments{
 \item{darch}{a darch instance}

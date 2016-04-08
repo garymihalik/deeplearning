@@ -19,7 +19,7 @@ backpropagate_delta_bn <- function(darch,
                                    trainData,
                                    targetData,
                                    errorFunc = meanSquareErr,
-                                   with_BN = T) {
+                                   with_BN = TRUE) {
 
   numLayers <- length(darch@layers)
   layers <- list()
@@ -33,12 +33,12 @@ backpropagate_delta_bn <- function(darch,
 
     layers[["weight"]][[i]] <- ret[1:dimV_input, ]
 
-    if(length(getLayer(darch, i)) < 4 | with_BN == F) {
+    if(length(getLayer(darch, i)) < 4 | with_BN == FALSE) {
       layers[["gamma"]][[i]] <-
-        matrix(rep(1, dimV_output * numObs), numObs, byrow = T)
+        matrix(rep(1, dimV_output * numObs), numObs, byrow = TRUE)
     } else {
       layers[["gamma"]][[i]] <-
-        matrix(rep(getLayer(darch, i)[[4]], numObs), numObs, byrow = T)
+        matrix(rep(getLayer(darch, i)[[4]], numObs), numObs, byrow = TRUE)
     }
 
     layers[["beta"]][[i]] <- verticalize(ret[(dimV_input + 1),], numObs)
@@ -70,7 +70,7 @@ backpropagate_delta_bn <- function(darch,
     # Batch Normalization
     layers[["x"]][[i]] <- data %*% weights
 
-    if(length(getLayer(darch, i)) < 4 | with_BN == F) {
+    if(length(getLayer(darch, i)) < 4 | with_BN == FALSE) {
       ret <- batch_normalization(layers[["x"]][[i]],
                                  layers[["gamma"]][[i]],
                                  layers[["beta"]][[i]],
@@ -112,7 +112,7 @@ backpropagate_delta_bn <- function(darch,
   errorDerivative <- errorFunc(layers[["output"]][[numLayers]], targetData)[[2]]
   layers[["delta_y"]][[numLayers]] <- errorDerivative * layers[["derivative"]][[numLayers]]
 
-  if(length(getLayer(darch, numLayers)) < 4 | with_BN == F) {
+  if(length(getLayer(darch, numLayers)) < 4 | with_BN == FALSE) {
     ret <- batch_normalization_differential(layers[["delta_y"]][[numLayers]],
                                             layers[["mu"]][[numLayers]],
                                             layers[["sigma_2"]][[numLayers]],
@@ -121,7 +121,8 @@ backpropagate_delta_bn <- function(darch,
                                             layers[["y"]][[numLayers]],
                                             layers[["gamma"]][[numLayers]],
                                             layers[["beta"]][[numLayers]],
-                                            with_BN = F)
+                                            with_BN = FALSE
+                                            )
 
   } else {
     ret <- batch_normalization_differential(layers[["delta_y"]][[numLayers]],
@@ -132,7 +133,7 @@ backpropagate_delta_bn <- function(darch,
                                             layers[["y"]][[numLayers]],
                                             layers[["gamma"]][[numLayers]],
                                             layers[["beta"]][[numLayers]],
-                                            with_BN = T)
+                                            with_BN = TRUE)
   }
 
   layers[["delta_x"]][[numLayers]] <- ret[[1]]
@@ -154,7 +155,7 @@ backpropagate_delta_bn <- function(darch,
     # zero derivatives makes sure that dropout nodes' delta functions are zeros
     layers[["delta_y"]][[i]] <- error * layers[["derivative"]][[i]]
 
-    if(length(getLayer(darch, i)) < 4 | with_BN == F) {
+    if(length(getLayer(darch, i)) < 4 | with_BN == FALSE) {
       ret <- batch_normalization_differential(layers[["delta_y"]][[i]],
                                               layers[["mu"]][[i]],
                                               layers[["sigma_2"]][[i]],
@@ -163,7 +164,7 @@ backpropagate_delta_bn <- function(darch,
                                               layers[["y"]][[i]],
                                               layers[["gamma"]][[i]],
                                               layers[["beta"]][[i]],
-                                              with_BN = F)
+                                              with_BN = FALSE)
 
     } else {
       ret <- batch_normalization_differential(layers[["delta_y"]][[i]],
@@ -174,7 +175,7 @@ backpropagate_delta_bn <- function(darch,
                                               layers[["y"]][[i]],
                                               layers[["gamma"]][[i]],
                                               layers[["beta"]][[i]],
-                                              with_BN = T)
+                                              with_BN = TRUE)
     }
 
     layers[["delta_x"]][[i]] <- ret[[1]]

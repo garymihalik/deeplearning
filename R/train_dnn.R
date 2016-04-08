@@ -40,7 +40,7 @@
 #'  output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
 #')
 #'
-#'dnn_regression <- train_dnn(
+#'  dnn_regression <- train_dnn(
 #'  dnn_regression,
 #'
 #'  # training data
@@ -54,7 +54,7 @@
 #'  learn_rate_bias = exp(-8) * 10, # learning rate for biases, hihger if use dropout
 #'  learn_rate_gamma = exp(-8) * 10, # learning rate for the gamma factor used
 #'  batch_size = 10, # number of observations in a batch during training. Higher for faster training. Lower for faster convergence
-#'  batch_normalization = T, # logical value, T to use batch normalization
+#'  batch_normalization = TRUE, # logical value, T to use batch normalization
 #'  dropout_input = 0.2, # dropout ratio in input.
 #'  dropout_hidden = 0.5, # dropout ratio in hidden layers
 #'  momentunm_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
@@ -64,7 +64,7 @@
 #'
 #'  # Error function
 #'  error_function = meanSquareErr, # error function to minimize during training. For regression, use meanSquareErr
-#'  report_classification_error = F # whether to print classification error during training
+#'  report_classification_error = FALSE # whether to print classification error during training
 #')
 #'
 #'
@@ -117,7 +117,7 @@
 #'  learn_rate_bias = exp(-8) * 10, # learning rate for biases, hihger if use dropout
 #'  learn_rate_gamma = exp(-8) * 10, # learning rate for the gamma factor used
 #'  batch_size = 10, # number of observations in a batch during training. Higher for faster training. Lower for faster convergence
-#'  batch_normalization = T, # logical value, T to use batch normalization
+#'  batch_normalization = TRUE, # logical value, T to use batch normalization
 #'  dropout_input = 0.2, # dropout ratio in input.
 #'  dropout_hidden = 0.5, # dropout ratio in hidden layers
 #'  momentunm_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
@@ -127,7 +127,7 @@
 #'
 #'  # Error function
 #'  error_function = crossEntropyErr, # error function to minimize during training. For regression, use crossEntropyErr
-#'  report_classification_error = T # whether to print classification error during training
+#'  report_classification_error = TRUE # whether to print classification error during training
 #')
 #'
 #'# the prediciton by dnn_regression
@@ -157,7 +157,7 @@ train_dnn <- function(darch, # darch instance to train
                       learn_rate_bias = exp(-10),
                       learn_rate_gamma = 1,
                       batch_size = 10,
-                      batch_normalization = T,
+                      batch_normalization = TRUE,
                       dropout_input = 0,
                       dropout_hidden = 0,
                       momentunm_initial = .6,
@@ -167,7 +167,7 @@ train_dnn <- function(darch, # darch instance to train
 
                       # target types
                       error_function = meanSquareErr,
-                      report_classification_error = F
+                      report_classification_error = FALSE
 ) {
   # 1. set up the inputs
   timeStart <- Sys.time()
