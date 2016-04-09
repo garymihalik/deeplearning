@@ -20,8 +20,7 @@ Or install it from github
 
 ### Examples
 
-Train a neural networ for regression
-------------------------------------
+#### Train a neural networ for regression
 
     input <- matrix(runif(1000), 500, 2)
     input_valid <- matrix(runif(100), 50, 2)
@@ -75,8 +74,7 @@ Train a neural networ for regression
     # calcualte the r-squared of the prediciton in validation
     rsq(dnn_regression, input = input_valid, target = target_valid)
 
-Train a neural network for classification
------------------------------------------
+#### Train a neural network for classification
 
 
     input <- matrix(runif(1000), 500, 2)
@@ -148,3 +146,7 @@ Sergey Ioffe, Christian Szegedy, 2015, Batch Normalization: Accelerating Deep Ne
 Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, 2015, Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification, arXiv
 
 X. Glorot, A. Bordes, and Y. Bengio, 2011,Deep sparse rectifier networks. In Proceedings of the 14th International Conference on Artificial Intelligence and Statistics, pages 315–323
+
+Drees, Martin (2013). "Implementierung und Analyse von tiefen Architekturen in R". German. Master's thesis. Fachhochschule Dortmund.
+
+Rueckert, Johannes (2015). "Extending the Darch library for deep architectures". Project thesis. Fachhochschule Dortmund. URL: [saviola.de](http://static.saviola.de/publications/rueckert_2015.pdf).
