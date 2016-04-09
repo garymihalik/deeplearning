@@ -7,7 +7,7 @@
 train_dnn(darch, input, target, input_valid = NULL, target_valid = NULL,
   ..., learn_rate_weight = exp(-10), learn_rate_bias = exp(-10),
   learn_rate_gamma = 1, batch_size = 10, batch_normalization = TRUE,
-  dropout_input = 0, dropout_hidden = 0, momentunm_initial = 0.6,
+  dropout_input = 0, dropout_hidden = 0, momentum_initial = 0.6,
   momentum_final = 0.9, momentum_switch = 100, num_epochs = 0,
   error_function = meanSquareErr, report_classification_error = FALSE)
 }
@@ -39,6 +39,8 @@ batch normalization during training. Recommneded value: T}
 
 \item{dropout_hidden}{dropout ratio at hidden layers. Recommended value: 0.5}
 
+\item{momentum_initial}{momentum ratio during training. Recommended value: 0.6}
+
 \item{momentum_final}{final momentum during training. Recommended value: 0.9}
 
 \item{momentum_switch}{afther which epoch the final momentum ratio is used during training}
@@ -49,8 +51,6 @@ batch normalization during training. Recommneded value: T}
 
 \item{report_classification_error}{logical value. T to report the classification error
 during training}
-
-\item{momentum_initial}{momentum ratio during training. Recommended value: 0.6}
 }
 \value{
 a trained deep neural network (darch instance)
@@ -70,8 +70,10 @@ dnn_regression <- new_dnn(
  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
  # The first element is the number of input variables.
  # The last element is the number of output variables.
- hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
- output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
+ hidden_layer_default = rectified_linear_unit_function,
+ # for hidden layers, use rectified_linear_unit_function
+ output_layer_default = linearUnitDerivative
+ # for regression, use linearUnitDerivative function
 )
 
  dnn_regression <- train_dnn(
@@ -84,21 +86,35 @@ dnn_regression <- new_dnn(
  target_valid, # target variable for validation
 
  # training parameters
- learn_rate_weight = exp(-8) * 10, # learning rate for weights, higher if use dropout
- learn_rate_bias = exp(-8) * 10, # learning rate for biases, hihger if use dropout
- learn_rate_gamma = exp(-8) * 10, # learning rate for the gamma factor used
- batch_size = 10, # number of observations in a batch during training. Higher for faster training. Lower for faster convergence
- batch_normalization = TRUE, # logical value, T to use batch normalization
- dropout_input = 0.2, # dropout ratio in input.
- dropout_hidden = 0.5, # dropout ratio in hidden layers
- momentunm_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
- momentum_final = 0.9, # final momentum in Stochastic Gradient Descent training
- momentum_switch = 100, # after which the momentum is switched from initial to final momentum
- num_epochs = 300, # number of iterations in training
+ learn_rate_weight = exp(-8) * 10,
+ # learning rate for weights, higher if use dropout
+ learn_rate_bias = exp(-8) * 10,
+ # learning rate for biases, hihger if use dropout
+ learn_rate_gamma = exp(-8) * 10,
+ # learning rate for the gamma factor used
+ batch_size = 10,
+ # number of observations in a batch during training.
+ # Higher for faster training. Lower for faster convergence
+ batch_normalization = TRUE,
+ # logical value, T to use batch normalization
+ dropout_input = 0.2,
+  # dropout ratio in input.
+ dropout_hidden = 0.5,
+ # dropout ratio in hidden layers
+ momentum_initial = 0.6,
+ # initial momentum in Stochastic Gradient Descent training
+ momentum_final = 0.9,
+ # final momentum in Stochastic Gradient Descent training
+ momentum_switch = 100,
+ # after which the momentum is switched from initial to final momentum
+ num_epochs = 300,
+  # number of iterations in training
 
  # Error function
- error_function = meanSquareErr, # error function to minimize during training. For regression, use meanSquareErr
- report_classification_error = FALSE # whether to print classification error during training
+ error_function = meanSquareErr,
+ # error function to minimize during training. For regression, use meanSquareErr
+ report_classification_error = FALSE
+ # whether to print classification error during training
 )
 
 
@@ -133,8 +149,10 @@ dnn_classification <- new_dnn(
  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
  # The first element is the number of input variables.
  # The last element is the number of output variables.
- hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
- output_layer_default = sigmoidUnitDerivative # for classification, use sigmoidUnitDerivative function
+ hidden_layer_default = rectified_linear_unit_function,
+ # for hidden layers, use rectified_linear_unit_function
+ output_layer_default = sigmoidUnitDerivative
+ # for classification, use sigmoidUnitDerivative function
 )
 
 dnn_classification <- train_dnn(
@@ -147,21 +165,35 @@ dnn_classification <- train_dnn(
  target_valid, # target variable for validation
 
  # training parameters
- learn_rate_weight = exp(-8) * 10, # learning rate for weights, higher if use dropout
- learn_rate_bias = exp(-8) * 10, # learning rate for biases, hihger if use dropout
- learn_rate_gamma = exp(-8) * 10, # learning rate for the gamma factor used
- batch_size = 10, # number of observations in a batch during training. Higher for faster training. Lower for faster convergence
- batch_normalization = TRUE, # logical value, T to use batch normalization
- dropout_input = 0.2, # dropout ratio in input.
- dropout_hidden = 0.5, # dropout ratio in hidden layers
- momentunm_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
- momentum_final = 0.9, # final momentum in Stochastic Gradient Descent training
- momentum_switch = 100, # after which the momentum is switched from initial to final momentum
- num_epochs = 300, # number of iterations in training
+ learn_rate_weight = exp(-8) * 10,
+ # learning rate for weights, higher if use dropout
+ learn_rate_bias = exp(-8) * 10,
+ # learning rate for biases, hihger if use dropout
+ learn_rate_gamma = exp(-8) * 10,
+ # learning rate for the gamma factor used
+ batch_size = 10,
+ # number of observations in a batch during training.
+ # Higher for faster training. Lower for faster convergence
+ batch_normalization = TRUE,
+ # logical value, T to use batch normalization
+ dropout_input = 0.2,
+ # dropout ratio in input.
+ dropout_hidden = 0.5,
+ # dropout ratio in hidden layers
+ momentum_initial = 0.6,
+ # initial momentum in Stochastic Gradient Descent training
+ momentum_final = 0.9,
+ # final momentum in Stochastic Gradient Descent training
+ momentum_switch = 100,
+ # after which the momentum is switched from initial to final momentum
+ num_epochs = 300,
+ # number of iterations in training
 
  # Error function
- error_function = crossEntropyErr, # error function to minimize during training. For regression, use crossEntropyErr
- report_classification_error = TRUE # whether to print classification error during training
+ error_function = crossEntropyErr,
+ # error function to minimize during training. For regression, use crossEntropyErr
+ report_classification_error = TRUE
+ # whether to print classification error during training
 )
 
 # the prediciton by dnn_regression

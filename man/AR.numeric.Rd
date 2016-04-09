@@ -4,12 +4,14 @@
 \alias{AR.numeric}
 \title{Calculates the Accruacy Ratio of a given set of probability}
 \usage{
-\method{AR}{numeric}(x, target)
+\method{AR}{numeric}(x, target, ...)
 }
 \arguments{
 \item{x}{a list of model output in the form of probabilities}
 
 \item{target}{binary response}
+
+\item{...}{additional inputs}
 }
 \description{
 This function calculates the Accuracy Ratio of a binary classification model

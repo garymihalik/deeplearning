@@ -5,6 +5,8 @@
 #' @param x weighted sum of outputs from the previous layer
 #' @param gamma the gamma coefficient
 #' @param beta the beta coefficient
+#' @param mu the mean of the input neurons. If NULL, it will be caluclated in the function.
+#' @param sigma_2 the variance of the input nerurons. If NULL, it will be calcualted in the function.
 #' @param epsilon a constant added to the variance for numerical stability
 #' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
 #' Sergey Ioffe, Christian Szegedy
@@ -56,6 +58,8 @@ batch_normalization <- function(x,
 #' @param y transformed input after batch normalization
 #' @param gamma gamma coefficient
 #' @param beta beta coefficient
+#' @param epsilon the contant added to the variance for numeric stability
+#' @param with_BN logical value, set to TRUE to turn on batch normalization
 #'
 #' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
 #'  Sergey Ioffe, Christian Szegedy

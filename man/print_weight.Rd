@@ -31,8 +31,10 @@ dnn_regression <- new_dnn(
  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
  # The first element is the number of input variables.
  # The last element is the number of output variables.
- hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
- output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
+ hidden_layer_default = rectified_linear_unit_function,
+ # for hidden layers, use rectified_linear_unit_function
+ output_layer_default = linearUnitDerivative
+ # for regression, use linearUnitDerivative function
 )
 
 # print the layer weights

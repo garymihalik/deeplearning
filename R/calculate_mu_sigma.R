@@ -4,6 +4,8 @@
 #' @param darch a darch instance
 #' @param input input data
 #'
+#' @importFrom darch getLayer
+#'
 #'
 
 

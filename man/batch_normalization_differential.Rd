@@ -23,6 +23,10 @@ batch_normalization_differential(delta_y, mu, sigma_2, x, x_hat, y, gamma, beta,
 \item{gamma}{gamma coefficient}
 
 \item{beta}{beta coefficient}
+
+\item{epsilon}{the contant added to the variance for numeric stability}
+
+\item{with_BN}{logical value, set to TRUE to turn on batch normalization}
 }
 \description{
 Calculates the differentials in batch normalization

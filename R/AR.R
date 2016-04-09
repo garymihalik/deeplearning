@@ -21,10 +21,10 @@ AR <- function(x, ...) {
 #'
 #' @param x a list of model output in the form of probabilities
 #' @param target binary response
-#'
+#' @param ... additional inputs
 #' @export
 
-AR.numeric <- function(x, target) {
+AR.numeric <- function(x, target, ...) {
   AR.default(x, target)
 }
 
@@ -36,10 +36,11 @@ AR.numeric <- function(x, target) {
 #'
 #' @param x a list of model output in the form of probabilities
 #' @param target binary response
+#' @param ... additional inputs
 #'
 #' @export
 
-AR.default <- function(x, target) {
+AR.default <- function(x, target, ...) {
   N <- length(x)
   seq = order(x, decreasing = T)
   target <- target[seq]
@@ -63,16 +64,18 @@ AR.default <- function(x, target) {
 #'
 #' This function calculates the Accuracy Ratio of a trained darch instance
 #'
-#' @param x a list of model output in the form of probabilities
+#' @param x a DArch instance
+#' @param input the input matrix
 #' @param target binary response
+#' @param ... additional inputs
 #'
 #' @export
 
 
 
-AR.DArch <- function(darch, input = darch@dataSet@data,
-                     target = darch@dataSet@targets) {
-  pred <- predict(darch, newdata = input)
+AR.DArch <- function(x, input = x@dataSet@data,
+                     target = x@dataSet@targets, ...) {
+  pred <- predict(x, newdata = input)
   AR.default(pred, target)
 }
 

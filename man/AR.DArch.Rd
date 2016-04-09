@@ -4,13 +4,17 @@
 \alias{AR.DArch}
 \title{Calculates the Accruacy Ratio of a given set of probability}
 \usage{
-\method{AR}{DArch}(darch, input = darch@dataSet@data,
-  target = darch@dataSet@targets)
+\method{AR}{DArch}(x, input = x@dataSet@data, target = x@dataSet@targets,
+  ...)
 }
 \arguments{
+\item{x}{a DArch instance}
+
+\item{input}{the input matrix}
+
 \item{target}{binary response}
 
-\item{x}{a list of model output in the form of probabilities}
+\item{...}{additional inputs}
 }
 \description{
 This function calculates the Accuracy Ratio of a trained darch instance

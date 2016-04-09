@@ -6,6 +6,13 @@
 \usage{
 generateDropoutMasksForDarch(darch, dropout_input, dropout_hidden)
 }
+\arguments{
+\item{darch, }{a DArch instance}
+
+\item{dropout_input, }{the dropout rate for the input layer}
+
+\item{dropout_hidden, }{the dropout rate for the hidden layer}
+}
 \description{
 This function generates dropout maks for dnn
 }

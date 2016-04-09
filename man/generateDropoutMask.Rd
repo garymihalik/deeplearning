@@ -6,6 +6,11 @@
 \usage{
 generateDropoutMask(length, dropoutRate)
 }
+\arguments{
+\item{length, }{the dimension of the layer}
+
+\item{dropoutRate, }{the dropout rate}
+}
 \description{
 This function generates the dropout mask for the deep neural network
 }

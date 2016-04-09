@@ -14,6 +14,10 @@ batch_normalization(x, gamma, beta, mu = NULL, sigma_2 = NULL,
 
 \item{beta}{the beta coefficient}
 
+\item{mu}{the mean of the input neurons. If NULL, it will be caluclated in the function.}
+
+\item{sigma_2}{the variance of the input nerurons. If NULL, it will be calcualted in the function.}
+
 \item{epsilon}{a constant added to the variance for numerical stability}
 }
 \description{

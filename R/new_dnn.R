@@ -4,25 +4,35 @@
 #'
 #' @param layer_structure a int vector that specifies the number and width of layers
 #' @param layer_functions a list of activation functions used by each layer
-#' @param layer_function_default default function used as the activation function
+#' @param output_layer_default the activation function for the output layer
+#' @param hidden_layer_default the activation function for the hidden layers
 #' @param weight_initiliazaiton function that initialize a layer's weight matrix
+#'
+#' @importFrom darch linearUnitDerivative generateWeights  createDataSet
+#' @importFrom methods cbind2
 #' @examples
 #' # create a new deep neural network for classificaiton
 #' dnn_regression <- new_dnn(
-#'  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
+#'  c(2, 50, 50, 20, 1),
+#'  # The layer structure of the deep neural network.
 #'  # The first element is the number of input variables.
 #'  # The last element is the number of output variables.
-#'  hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
-#'  output_layer_default = sigmoidUnitDerivative # for classification, use sigmoidUnitDerivative function
+#'  hidden_layer_default = rectified_linear_unit_function,
+#'  # for hidden layers, use rectified_linear_unit_function
+#'  output_layer_default = sigmoidUnitDerivative
+#'  # for classification, use sigmoidUnitDerivative function
 #' )
 #'
 #' # create a new deep neural network for classificaiton
 #'dnn_regression <- new_dnn(
-#'  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
+#'  c(2, 50, 50, 20, 1),
+#'  # The layer structure of the deep neural network.
 #'  # The first element is the number of input variables.
 #'  # The last element is the number of output variables.
-#'  hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
-#'  output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
+#'  hidden_layer_default = rectified_linear_unit_function,
+#'  # for hidden layers, use rectified_linear_unit_function
+#'  output_layer_default = linearUnitDerivative
+#'  # for regression, use linearUnitDerivative function
 #')
 #' @export
 
@@ -36,7 +46,7 @@ new_dnn <- function(layer_structure,
     darch <-new("DArch")
 
     # set up the darch stats veriable
-    setStats(darch) <-
+    darch@stats <-
       list("dataErrors" = list("raw"=c(), "class" = c()),
            "validErrors" = list("raw"=c(), "class" = c()),
            "times" = c(), "preTrainTime" = 0, "fineTuneTime" = 0)

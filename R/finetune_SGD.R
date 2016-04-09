@@ -12,6 +12,8 @@
 #' @param errorFunc the error function to minimize during training
 #' @param with_BN logical value, T to train the neural net with batch normalization
 #'
+#' @importFrom darch getLayer getDropoutMask getMomentum
+#'
 #' @return a darch instance with parameters updated with stochastic gradient descent
 #'
 
@@ -59,9 +61,9 @@ finetune_SGD_bn <- function(darch,
       gammaInc <- learnRateGamma * delta_gamma[[i]][1,]
       gamma <- gamma - gammaInc
 
-      setLayerWeights(darch,i) <- rbind(weights,biases)
-      setLayerField(darch, i, 3) <- weightsInc
-      setLayerField(darch, i, 4) <- gamma
+      darch@layers[[i]][[1]] <- rbind(weights,biases)
+      darch@layers[[i]][[3]] <- weightsInc
+      darch@layers[[i]][[4]] <- gamma
   }
 
   # setStats(darch) <- stats

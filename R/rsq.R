@@ -19,15 +19,15 @@ rsq <- function(x, ...) {
 #' @param  x DArch Model
 #' @param  input Input data
 #' @param  target Target data
-#'
+#' @param ... addtional inputs
 #' @import  futile.logger
 #' @export
 
-rsq.DArch <- function(darch,
-                      input = darch@dataSet@data,
-                      target = darch@dataSet@targets) {
+rsq.DArch <- function(x,
+                      input = x@dataSet@data,
+                      target = x@dataSet@targets, ...) {
   y <- target
-  pred <- predict(darch, newdata = input)
+  pred <- predict(x, newdata = input)
   plot(y, pred, xlab = "target", ylab = "prediction")
   RSQ <- 1 - sum((pred-y)^2)/sum((y-mean(y))^2)
   flog.info(paste0("RSQ = ", RSQ))
@@ -37,16 +37,17 @@ rsq.DArch <- function(darch,
 #'
 #' Calcualte a regression model's RSQ
 #'
-#' @param  x linear Model
-#' @param  input Input data
-#' @param  target Target data
+#' @param x linear Model
+#' @param input Input data
+#' @param target Target data
+#' @param ... additional inputs
 #'
 #' @import  futile.logger
 #' @export
 
-rsq.lm <- function(mod, input, target) {
+rsq.lm <- function(x, input, target, ...) {
   y <- target
-  pred <- predict(mod, newdata = data.frame(input))
+  pred <- predict(x, newdata = data.frame(input))
   plot(y, pred)
   plot(y, pred, xlab = "target", ylab = "prediction")
   RSQ <- 1 - sum((pred-y)^2)/sum((y-mean(y))^2)

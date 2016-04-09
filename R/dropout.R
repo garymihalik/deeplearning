@@ -1,7 +1,11 @@
 #' Generates dropout masks for dnn
 #'
 #' This function generates dropout maks for dnn
+#' @param darch, a DArch instance
+#' @param dropout_input, the dropout rate for the input layer
+#' @param dropout_hidden, the dropout rate for the hidden layer
 #'
+#' @importFrom darch getLayers getLayerWeights
 #' @references Dropout: A Simple Way to Prevent Neural Networks from
 #'  Overfitting, Nitish Srivastava
 #' @seealso \url{https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf}
@@ -19,7 +23,7 @@ generateDropoutMasksForDarch <- function(darch, dropout_input, dropout_hidden)
 
   for (i in 1:(numLayers - 1))
   {
-    setDropoutMask(darch, i) <-
+    darch@dropoutMasks[[i + 1]] <-
       generateDropoutMask(nrow(getLayerWeights(darch, i+1)[])-1,
                           dropout_hidden)
   }
@@ -30,6 +34,8 @@ generateDropoutMasksForDarch <- function(darch, dropout_input, dropout_hidden)
 #' Generates the dropout mask for the deep neural network
 #'
 #' This function generates the dropout mask for the deep neural network
+#' @param length, the dimension of the layer
+#' @param dropoutRate, the dropout rate
 #'
 #' @references Dropout: A Simple Way to Prevent Neural Networks from
 #'  Overfitting, Nitish Srivastava

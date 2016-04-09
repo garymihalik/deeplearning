@@ -4,12 +4,14 @@
 \alias{AR.default}
 \title{Calculates the Accruacy Ratio of a given set of probability}
 \usage{
-\method{AR}{default}(x, target)
+\method{AR}{default}(x, target, ...)
 }
 \arguments{
 \item{x}{a list of model output in the form of probabilities}
 
 \item{target}{binary response}
+
+\item{...}{additional inputs}
 }
 \description{
 This function calculates the Accuracy Ratio of a binary classification model

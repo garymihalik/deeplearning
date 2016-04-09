@@ -4,15 +4,17 @@
 \alias{rsq.DArch}
 \title{Utilitiy function that calcualtes RSQ of a DArch instance}
 \usage{
-\method{rsq}{DArch}(darch, input = darch@dataSet@data,
-  target = darch@dataSet@targets)
+\method{rsq}{DArch}(x, input = x@dataSet@data, target = x@dataSet@targets,
+  ...)
 }
 \arguments{
+\item{x}{DArch Model}
+
 \item{input}{Input data}
 
 \item{target}{Target data}
 
-\item{x}{DArch Model}
+\item{...}{addtional inputs}
 }
 \description{
 Calcualte a regression model's RSQ of a deep neural network

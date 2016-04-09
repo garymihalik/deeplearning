@@ -10,6 +10,10 @@
 #'  erros and cross entropy errors are supported.
 #' @param with_BN traing with batch normalization on or off
 #'
+#' @importFrom darch getLayer
+#' @importFrom darch getDropoutMask
+#'
+#'
 #' @references Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
 #'  Sergey Ioffe, Christian Szegedy
 #' @seealso \url{http://jmlr.org/proceedings/papers/v37/ioffe15.pdf} Pg 4

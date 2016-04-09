@@ -7,6 +7,9 @@
 #' @param show_derivative T to show the weight value. F to show the percentage
 #' weight change in the finetuning stage. This helps spot the network saturation problem.
 #' @param type type of the graph. It supports "heatmap", "surface", and "histogram"
+#'
+#' @importFrom darch getLayer
+#'
 #' @examples
 #' # Example of Regression
 #'
@@ -19,8 +22,10 @@
 #'  c(2, 50, 50, 20, 1),  # The layer structure of the deep neural network.
 #'  # The first element is the number of input variables.
 #'  # The last element is the number of output variables.
-#'  hidden_layer_default = rectified_linear_unit_function, # for hidden layers, use rectified_linear_unit_function
-#'  output_layer_default = linearUnitDerivative # for regression, use linearUnitDerivative function
+#'  hidden_layer_default = rectified_linear_unit_function,
+#'  # for hidden layers, use rectified_linear_unit_function
+#'  output_layer_default = linearUnitDerivative
+#'  # for regression, use linearUnitDerivative function
 #')
 #'
 #' # print the layer weights

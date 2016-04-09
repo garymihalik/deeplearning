@@ -4,14 +4,16 @@
 \alias{rsq.lm}
 \title{Utilitiy function that calcualtes RSQ of a linear model}
 \usage{
-\method{rsq}{lm}(mod, input, target)
+\method{rsq}{lm}(x, input, target, ...)
 }
 \arguments{
+\item{x}{linear Model}
+
 \item{input}{Input data}
 
 \item{target}{Target data}
 
-\item{x}{linear Model}
+\item{...}{additional inputs}
 }
 \description{
 Calcualte a regression model's RSQ
