@@ -75,8 +75,9 @@
 #'  # final momentum in Stochastic Gradient Descent training
 #'  momentum_switch = 100,
 #'  # after which the momentum is switched from initial to final momentum
-#'  num_epochs = 300,
+#'  num_epochs = 100,
 #'   # number of iterations in training
+#'
 #'
 #'  # Error function
 #'  error_function = meanSquareErr,
@@ -154,7 +155,7 @@
 #'  # final momentum in Stochastic Gradient Descent training
 #'  momentum_switch = 100,
 #'  # after which the momentum is switched from initial to final momentum
-#'  num_epochs = 300,
+#'  num_epochs = 100,
 #'  # number of iterations in training
 #'
 #'  # Error function

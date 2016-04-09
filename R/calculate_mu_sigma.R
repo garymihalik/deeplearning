@@ -80,6 +80,8 @@ calcualte_population_mu_sigma <- function (darch, input) {
 #'  to 0 and 1
 #' @param darch a darch instance
 #'
+#' @importFrom darch getLayer
+#'
 
 
 
