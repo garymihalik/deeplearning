@@ -32,7 +32,7 @@ dnn_regression <- train_dnn(
                      batch_normalization = T, # logical value, T to use batch normalization
                      dropout_input = 0.2, # dropout ratio in input.
                      dropout_hidden = 0.5, # dropout ratio in hidden layers
-                     momentunm_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
+                     momentum_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
                      momentum_final = 0.9, # final momentum in Stochastic Gradient Descent training
                      momentum_switch = 100, # after which the momentum is switched from initial to final momentum
                      num_epochs = 300, # number of iterations in training
