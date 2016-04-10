@@ -11,7 +11,7 @@ Version: 0.1.0
 Date: 2016-04-10
 Authors@R: c(
     person(given = "Zhi", family = "Ruan", email = "ryan.zhiruan@gmail", role = c("aut", "cre")),
-    person("Martin", "Drees", email = "mdrees@stud.fh-dortmund.de", role = c("cpy"))
+    person("Martin", "Drees", email = "mdrees@stud.fh-dortmund.de", role = c("cph"))
     )
 LazyData: TRUE
 URL: https://github.com/rz1988/deeplearning
