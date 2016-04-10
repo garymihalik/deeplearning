@@ -18,6 +18,14 @@ Or install it from github
 
     devtools::install_github("rz1988/deeplearning")
 
+### Use deeplearning
+
+Using the deeplearning package is designed to be easy and fun. It only takes two steps to run your first neural network.
+
+In step one, the user will create a new neural network. You will need to specify the strucutre of the neural network which are the number of layers and neurons in the network and the type of activation functions. The default activation is rectifier linear unit function for the hidden layers but you can also use other types of activation such as sigmoidal function or write your own activation function.
+
+In step two, the user will train the neural network with a training input and a traing target. There are a number of other training parameters. For how to choose these training parameters please refer to <https://github.com/rz1988/deeplearning>.
+
 ### Examples
 
 #### Train a neural networ for regression

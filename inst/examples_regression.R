@@ -25,9 +25,9 @@ dnn_regression <- train_dnn(
                      target_valid, # target variable for validation
 
                      # training parameters
-                     learn_rate_weight = exp(-8) * 10, # learning rate for weights, higher if use dropout
-                     learn_rate_bias = exp(-8) * 10, # learning rate for biases, hihger if use dropout
-                     learn_rate_gamma = exp(-8) * 10, # learning rate for the gamma factor used
+                     learn_rate_weight = exp(-8) * 1, # learning rate for weights, higher if use dropout
+                     learn_rate_bias = exp(-8) * 1, # learning rate for biases, hihger if use dropout
+                     learn_rate_gamma = exp(-8) * 1, # learning rate for the gamma factor used
                      batch_size = 10, # number of observations in a batch during training. Higher for faster training. Lower for faster convergence
                      batch_normalization = T, # logical value, T to use batch normalization
                      dropout_input = 0.2, # dropout ratio in input.
@@ -35,7 +35,7 @@ dnn_regression <- train_dnn(
                      momentum_initial = 0.6, # initial momentum in Stochastic Gradient Descent training
                      momentum_final = 0.9, # final momentum in Stochastic Gradient Descent training
                      momentum_switch = 100, # after which the momentum is switched from initial to final momentum
-                     num_epochs = 300, # number of iterations in training
+                     num_epochs = 100, # number of iterations in training
 
                      # Error function
                      error_function = meanSquareErr, # error function to minimize during training. For regression, use meanSquareErr
