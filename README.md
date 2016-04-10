@@ -6,7 +6,7 @@ deeplearning
 
 ### About
 
-deeplearning is an R package that implements deep neural networks in R. It employes Rectifier Linear Unit functions as its building blocks and trains a neural network with stochastic gradient descent method with batch normalization to speed up the training and promote regularization. Neural networks of such kind of architecture and training methods are state of the art and even achieved suplassing human-level performance in ImageNet competition. deeplearning package is inspired by another R package darch which implements layerwise Restricted Boltzmann Machine pretraining and dropout and uses its class DArch as the default class.
+The deeplearning package is an R package that implements deep neural networks in R. It employes Rectifier Linear Unit functions as its building blocks and trains a neural network with stochastic gradient descent method with batch normalization to speed up the training and promote regularization. Neural networks of such kind of architecture and training methods are state of the art and even achieved suplassing human-level performance in ImageNet competition. The deeplearning package is inspired by another R package darch which implements layerwise Restricted Boltzmann Machine pretraining and dropout and uses its class DArch as the default class.
 
 ### Installtion
 
@@ -149,4 +149,4 @@ X. Glorot, A. Bordes, and Y. Bengio, 2011,Deep sparse rectifier networks. In Pro
 
 Drees, Martin (2013). "Implementierung und Analyse von tiefen Architekturen in R". German. Master's thesis. Fachhochschule Dortmund.
 
-Rueckert, Johannes (2015). "Extending the Darch library for deep architectures". Project thesis. Fachhochschule Dortmund. URL: [saviola.de](http://static.saviola.de/publications/rueckert_2015.pdf).
+Rueckert, Johannes (2015). "Extending the Darch library for deep architectures". Project thesis. Fachhochschule Dortmund. URL: [saviola.de](http://static.saviola.de/publications/rueckert_2015.pdf)
