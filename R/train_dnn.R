@@ -25,6 +25,7 @@
 #'  during training
 #'
 #' @importFrom darch createDataSet validateDataSet getEpochs
+#' @importFrom stats predict
 #'
 #' @examples
 #' # Example of Regression

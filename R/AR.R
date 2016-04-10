@@ -37,6 +37,7 @@ AR.numeric <- function(x, target, ...) {
 #' @param x a list of model output in the form of probabilities
 #' @param target binary response
 #' @param ... additional inputs
+#' @importFrom graphics plot
 #'
 #' @export
 
@@ -68,6 +69,8 @@ AR.default <- function(x, target, ...) {
 #' @param input the input matrix
 #' @param target binary response
 #' @param ... additional inputs
+#'
+#' @importFrom stats predict
 #'
 #' @export
 

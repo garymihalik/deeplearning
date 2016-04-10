@@ -9,7 +9,8 @@
 #' @param weight_initiliazaiton function that initialize a layer's weight matrix
 #'
 #' @importFrom darch linearUnitDerivative generateWeights  createDataSet
-#' @importFrom methods cbind2
+#' @importFrom methods new
+#' @importClassesFrom darch DArch
 #' @examples
 #' # create a new deep neural network for classificaiton
 #' dnn_regression <- new_dnn(

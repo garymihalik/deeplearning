@@ -20,7 +20,9 @@ rsq <- function(x, ...) {
 #' @param  input Input data
 #' @param  target Target data
 #' @param ... addtional inputs
-#' @import  futile.logger
+#' @import futile.logger
+#' @importFrom stats predict
+#' @importFrom graphics plot
 #' @export
 
 rsq.DArch <- function(x,
@@ -41,7 +43,8 @@ rsq.DArch <- function(x,
 #' @param input Input data
 #' @param target Target data
 #' @param ... additional inputs
-#'
+#' @importFrom  stats predict
+#' @importFrom graphics plot
 #' @import  futile.logger
 #' @export
 
