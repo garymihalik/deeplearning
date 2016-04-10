@@ -8,7 +8,7 @@ Description: An implementation of deep neural network with rectifier linear unit
 	method (Srivastava 2014) is implemented as a regularization. deeplearning package is inspired by darch package and uses
 	of its classes and functions.
 Version: 0.1.0
-Date: 2016-03-14
+Date: 2016-04-10
 Authors@R: c(
     person("Zhi Ryan", "Ruan", , "ryan.zhiruan@gmail", role = c("aut", "cre"))
     )
