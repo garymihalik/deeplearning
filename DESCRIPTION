@@ -1,19 +1,18 @@
 Package: deeplearning
 Type: Package
-Title: An implementation of deep neural network for regression and classification
-Description: An implementation of deep neural network with rectifier linear units (ReLU) that are trained
+Title: An Implementation of Deep Neural Network for Regression and Classification
+Description: An implementation of deep neural network with rectifier linear units (ReLU) trained
 	with stochastic gradient descent (SGD) method and batch normalization. A combination of these methods have
-	achieved state-of-the-art accuracy in imageNet classification by overcoming the gradient saturation
-	problem experienced in the past when training neural networks with over three to four hidden layers. In addtion, dropout
-	method (Srivastava 2014) is implemented as a regularization. deeplearning package is inspired by darch package and uses
-	of its classes and functions.
+	achieved state-of-the-art performance in ImageNet classification by overcoming the gradient saturation
+	problem experienced by many deep architecture neural network models in the past. In addition, batch normalization (Sergey Ioffe 2015)
+	and dropout (Nitish Srivastava 2014) are implemented as regularization. The deeplearning package is inspired by
+	the darch package and uses its class DArch.
 Version: 0.1.0
 Date: 2016-04-10
 Authors@R: c(
-    person("Zhi Ryan", "Ruan", , "ryan.zhiruan@gmail", role = c("aut", "cre"))
+    person("Zhi", "Ruan", "Ryan", email = "ryan.zhiruan@gmail", role = c("aut", "cre")),
+    person("Martin", "Drees", email = "mdrees@stud.fh-dortmund.de", role = c("ctb"))
     )
-Maintainer: <ryan.zhiruan@gmail.com>
-License: What license is it under?
 LazyData: TRUE
 URL: https://github.com/rz1988/deeplearning
 BugReports: https://github.com/rz1988/deeplearning/issues

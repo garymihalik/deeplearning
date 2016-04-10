@@ -75,8 +75,9 @@
 #'  # final momentum in Stochastic Gradient Descent training
 #'  momentum_switch = 100,
 #'  # after which the momentum is switched from initial to final momentum
-#'  num_epochs = 100,
+#'  num_epochs = 5,
 #'   # number of iterations in training
+#'   # increase numbef of epochs to 100 for better model fit
 #'
 #'
 #'  # Error function
@@ -155,8 +156,9 @@
 #'  # final momentum in Stochastic Gradient Descent training
 #'  momentum_switch = 100,
 #'  # after which the momentum is switched from initial to final momentum
-#'  num_epochs = 100,
+#'  num_epochs = 5,
 #'  # number of iterations in training
+#'  # increase num_epochs to 100 for better model fit
 #'
 #'  # Error function
 #'  error_function = crossEntropyErr,
