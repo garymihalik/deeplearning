@@ -93,7 +93,7 @@ new_dnn <- function(layer_structure,
     }
 
     # set up the slots necessary for predict.DArch function
-    darch@dataSet <- createDataSet(matrix(0, 1, layer_structure[[1]]), NULL)
+    darch@dataSet <- DataSet(matrix(0, 1, layer_structure[[1]]), NULL)
     darch@ff <- F
 
     # set up the execution function
